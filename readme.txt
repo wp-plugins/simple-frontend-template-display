@@ -1,7 +1,7 @@
 === Simple Frontend Template Display ===
 Contributors: mikeselander
 Donate link: http://mikeselander.com
-Tags: template name, admin bar, front end display, page template, development, view, pages
+Tags: template name, admin bar, front end display, page template, development, view, page, toolbar
 Requires at least: 3.4
 Tested up to: 3.7.1
 Stable tag: 1.0
@@ -14,7 +14,7 @@ Adds an admin toolbar menu item that displays the current page template.
 
 Simple Frontend Template Display will show the name of the template that you’re using in the toolbar when you’re in the frontend of your website. You can use this to keep track of the various templates you’re using without having to hop into the edit screen every time you want to check a template.
 
-Al you have to do to get this working is to install the plugin. It will then automatically show up in the toolbar on all pages on your site. 
+All you have to do to get this working is to install the plugin. It will then automatically show up in the toolbar on all pages on your site. 
 
 I hope this speeds up your development work!
 
