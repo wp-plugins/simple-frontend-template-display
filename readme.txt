@@ -1,4 +1,4 @@
-=== Page Edit Toolbar ===
+=== Simple Frontend Template Display ===
 Contributors: mikeselander
 Donate link: http://mikeselander.com
 Tags: template name, admin bar, front end display, page template, development, view, pages
