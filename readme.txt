@@ -4,7 +4,7 @@ Donate link: http://mikeselander.com
 Tags: template name, admin bar, front end display, page template, development, view, page, toolbar
 Requires at least: 3.4
 Tested up to: 3.7.1
-Stable tag: 1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,10 +34,19 @@ It’s super easy and requires almost no work on your part. It will simply start
 
 == Upgrade Notice ==
 
+= 0.2.0 =
+Adds a drop down item to show the page template filename & improves several methods
+
 = 0.1.0 =
 Initial Release
 
 == Changelog ==
 
-= 0.1 =
+= 0.2.0 =
+* Adapted add_menu method to the preferred add_node
+* Fixed several typographical & commenting errors
+* Split up the filename and template name functions to allow for the separate dropdown
+* Added a drop down with the filename so you can see all of the template data
+
+= 0.1.0 =
 * Initial release

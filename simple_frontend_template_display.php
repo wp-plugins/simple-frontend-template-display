@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) OR exit;
 Plugin Name: Simple Frontend Template Display
 Plugin URI: http://www.mikeselander.com/
 Description: Displays the current page template in the admin bar for quick & easy reference
-Version: 0.1
+Version: 0.2
 Author: Mike Selander
 Author URI: http://www.mikeselander.com/
 License: GPL2
@@ -24,7 +24,7 @@ License: GPL2
  */
 class PageTemplateDisplay{
 
-	const VERSION = '0.1.0';
+	const VERSION = '0.2.0';
 
 	/**
 	 * Constructor function.
@@ -45,8 +45,8 @@ class PageTemplateDisplay{
 	 * @access public
 	 * @since 0.1.0
 	 */
-	public function page_template_display(){
-		global $wp_admin_bar;
+	public function page_template_display( $wp_admin_bar ){
+		//global $wp_admin_bar;
 
 		if (!is_super_admin() || !is_admin_bar_showing() )
 			return;
@@ -56,7 +56,7 @@ class PageTemplateDisplay{
 
 			// if get_current_template_name returns - set the menu item
 			if ( $this->get_current_template_name() ) {
-				$wp_admin_bar->add_menu(
+				$wp_admin_bar->add_node(
 					array(
 						'id' 		=> 'page_template',
 						'title' 	=> __( 'Template: '.$this->get_current_template_name(), 'page_template' ),
@@ -64,6 +64,16 @@ class PageTemplateDisplay{
 						'href' 		=> false
 					)
 				);
+				$wp_admin_bar->add_node(
+					array(
+						'id' 		=> 'page_template_slug',
+						'title' 	=> __( $this->get_current_page_slug(), 'page_template' ),
+						'parent'	=> page_template,
+						'href' 		=> false
+					)
+				);
+
+
 			} // end if template name is returned
 
 		} // end if !is_admin && is_page
@@ -73,18 +83,11 @@ class PageTemplateDisplay{
 	/**
 	 * Grabs the template name
 	 *
-	 * @access private
+	 * @access public
 	 * @since 0.1.0
 	 * @return Template name string
 	 */
 	public function get_current_template_name(){
-		global $wp_query;
-
-		$post_id = $wp_query->post->ID;
-		$current_template = get_page_template_slug($post_id);
-
-		// If you only want to return the template filename, uncomment the below line and comment the rest of this function
-		// return $current_template
 
 		// get all templates
 		$all_templates = wp_get_theme()->get_page_templates();
@@ -92,7 +95,7 @@ class PageTemplateDisplay{
 		foreach ( $all_templates as $filename => $name ) {
 
 			// if the template matches one of the filenames, return
-			if ( $current_template == $filename ){
+			if ( $this->get_current_page_slug() == $filename ){
 				return $name;
 				$returned = true;
 			};
@@ -104,7 +107,21 @@ class PageTemplateDisplay{
 			return "Default";
 		}
 
-	} // and get_current_template_name()
+	} // end get_current_template_name()
+
+	/**
+	 * Grabs the template slug
+	 *
+	 * @access public
+	 * @since 0.2.0
+	 * @return Template slug string
+	 */
+	public function get_current_page_slug(){
+		global $wp_query;
+
+		$post_id = $wp_query->post->ID;
+		return get_page_template_slug($post_id);
+	} // end get_current_page_slug()
 
 } // end PageTemplateDisplay
 
