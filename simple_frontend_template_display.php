@@ -64,14 +64,17 @@ class PageTemplateDisplay{
 						'href' 		=> false
 					)
 				);
-				$wp_admin_bar->add_node(
-					array(
-						'id' 		=> 'page_template_slug',
-						'title' 	=> __( $this->get_current_page_slug(), 'page_template' ),
-						'parent'	=> page_template,
-						'href' 		=> false
-					)
-				);
+				if ( $this->get_current_page_slug() ) {
+					$wp_admin_bar->add_node(
+						array(
+							'id' 		=> 'page_template_slug',
+							'title' 	=> __( $this->get_current_page_slug(), 'page_template' ),
+							'parent'	=> page_template,
+							'href' 		=> false
+						)
+					);
+				}
+
 
 
 			} // end if template name is returned
