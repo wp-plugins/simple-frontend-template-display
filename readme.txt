@@ -43,10 +43,10 @@ Initial Release
 == Changelog ==
 
 = 0.2.0 =
-* Adapted add_menu method to the preferred add_node
-* Fixed several typographical & commenting errors
-* Split up the filename and template name functions to allow for the separate dropdown
 * Added a drop down with the filename so you can see all of the template data
+* Changed add_menu method to the preferred add_node
+* Split up the filename and template name functions to allow for the separate dropdown
+* Fixed several typographical & commenting errors
 
 = 0.1.0 =
 * Initial release
