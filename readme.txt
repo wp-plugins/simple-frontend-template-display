@@ -3,7 +3,7 @@ Contributors: mikeselander
 Donate link: http://mikeselander.com
 Tags: template name, admin bar, front end display, page template, development, view, page, toolbar
 Requires at least: 3.4
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,9 +16,7 @@ Simple Frontend Template Display will show the name of the template that you’r
 
 All you have to do to get this working is to install the plugin. It will then automatically show up in the toolbar on all pages on your site. 
 
-I hope this speeds up your development work!
-
-== Installation ===
+== Installation ==
 
 1. Upload `Simple Frontend Template Display` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -43,10 +41,10 @@ Initial Release
 == Changelog ==
 
 = 0.2.0 =
-* Adapted add_menu method to the preferred add_node
-* Fixed several typographical & commenting errors
-* Split up the filename and template name functions to allow for the separate dropdown
 * Added a drop down with the filename so you can see all of the template data
+* Changed add_menu method to the preferred add_node
+* Split up the filename and template name functions to allow for the separate dropdown
+* Fixed several typographical & commenting errors
 
 = 0.1.0 =
 * Initial release
