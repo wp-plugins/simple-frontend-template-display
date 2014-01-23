@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) OR exit;
 /*
 Plugin Name: Simple Frontend Template Display
 Plugin URI: http://www.mikeselander.com/
-Description: Displays the current page template in the admin bar for quick & easy reference
-Version: 0.2
+Description: Displays the current page template in the admin toolbar for quick & easy reference
+Version: 0.3
 Author: Mike Selander
 Author URI: http://www.mikeselander.com/
 License: GPL2
@@ -19,12 +19,12 @@ License: GPL2
  * @category plugins
  * @author Mike Selander
  * @since 0.0.0
- * @link      http://mikeselander.com
+ * @link http://mikeselander.com
  * @copyright 2013 Mike Selander
  */
 class PageTemplateDisplay{
 
-	const VERSION = '0.2.0';
+	const VERSION = '0.3.0';
 
 	/**
 	 * Constructor function.
@@ -36,6 +36,7 @@ class PageTemplateDisplay{
 	public function __construct(){
 
 		add_action('admin_bar_menu', array( $this, "page_template_display" ), 500 );
+		add_action('admin_bar_menu', array( $this, "get_similar_pages" ), 501 );
 
 	} // end __construct()
 
@@ -56,6 +57,7 @@ class PageTemplateDisplay{
 
 			// if get_current_template_name returns - set the menu item
 			if ( $this->get_current_template_name() ) {
+
 				$wp_admin_bar->add_node(
 					array(
 						'id' 		=> 'page_template',
@@ -64,6 +66,8 @@ class PageTemplateDisplay{
 						'href' 		=> false
 					)
 				);
+
+				// if get_current_page_slug returns - set the next menu item
 				if ( $this->get_current_page_slug() ) {
 					$wp_admin_bar->add_node(
 						array(
@@ -74,8 +78,6 @@ class PageTemplateDisplay{
 						)
 					);
 				}
-
-
 
 			} // end if template name is returned
 
@@ -125,6 +127,76 @@ class PageTemplateDisplay{
 		$post_id = $wp_query->post->ID;
 		return get_page_template_slug($post_id);
 	} // end get_current_page_slug()
+
+	/**
+	 * Grabs other pages with the same template
+	 *
+	 * @access public
+	 * @since 0.3.0
+	 * @return list of pages with
+	 */
+	public function get_similar_pages( $wp_admin_bar ){
+		global $wp_query;
+
+		if (!is_super_admin() || !is_admin_bar_showing() )
+			return;
+
+		// if you're not in the admin backend & it's a page
+		if ( ( !is_admin() ) && ( is_page() ) ){
+
+			// define the variables
+			$template = $this->get_current_page_slug();
+			$post_id = $wp_query->post->ID;
+			$i = 1;
+
+			// query the pages
+			$args = array(
+	           'post_type' 	=> 'page',
+			   'meta_key' 	=> '_wp_page_template',
+			   'meta_value' => $template,
+	           'exclude'	=> $post_id
+	        );
+
+	        $pages = get_pages( $args );
+
+			// if the query returns results, add a header node
+			if ( !empty( $pages ) ) {
+
+				$wp_admin_bar->add_node(
+					array(
+						'id' 		=> 'similar_pages',
+						'title' 	=> "<strong>".__( 'Similar Pages:', 'page_template' )."</strong>",
+						'parent'	=> page_template,
+						'href' 		=> false
+					)
+				);
+
+				// Loop through the results
+			    foreach( $pages as $page ){
+
+					// Loop until we hit 15
+					if ( $i < 16 ) {
+
+						$wp_admin_bar->add_node(
+							array(
+								'id' 		=> 'similar_page_'.$i,
+								'title' 	=> $page->post_title,
+								'parent'	=> page_template,
+								'href' 		=> get_permalink($page->ID)
+							)
+						);
+
+					} // end if
+
+					$i++;
+
+			    } // end foreach
+
+			} // end if have posts
+
+		} // end if !is_admin && is_page()
+
+	} // end get_similar_pages()
 
 } // end PageTemplateDisplay
 

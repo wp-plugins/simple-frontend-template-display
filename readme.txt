@@ -4,7 +4,7 @@ Donate link: http://mikeselander.com
 Tags: template name, admin bar, front end display, page template, development, view, page, toolbar
 Requires at least: 3.4
 Tested up to: 3.8
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ It’s super easy and requires almost no work on your part. It will simply start
 
 == Upgrade Notice ==
 
+= 0.3.0 =
+Adds drop down items to show pages with the same page template (up to 15) and a banner to the landing page
+
 = 0.2.0 =
 Adds a drop down item to show the page template filename & improves several methods
 
@@ -39,6 +42,9 @@ Adds a drop down item to show the page template filename & improves several meth
 Initial Release
 
 == Changelog ==
+
+= 0.3.0 =
+* Added get_similar_pages function to retrieve pages with the same template
 
 = 0.2.0 =
 * Added a drop down with the filename so you can see all of the template data
