@@ -3,8 +3,8 @@ Contributors: mikeselander
 Donate link: http://mikeselander.com
 Tags: template name, admin bar, front end display, page template, development, view, page, toolbar
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 0.3.0
+Tested up to: 4.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,10 @@ Install the plugin!
 It’s super easy and requires almost no work on your part. It will simply start showing up once you have it all installed.
 
 == Upgrade Notice ==
+
+= 0.3.1 =
+Fixed Strict PHP standards error concerning line 184
+Tested up to 4.0
 
 = 0.3.0 =
 Adds drop down items to show pages with the same page template (up to 15) and a banner to the landing page

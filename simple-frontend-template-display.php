@@ -24,7 +24,7 @@ License: GPL2
  */
 class PageTemplateDisplay{
 
-	const VERSION = '0.3.0';
+	const VERSION = '0.3.1';
 
 	/**
 	 * Constructor function.
@@ -73,7 +73,7 @@ class PageTemplateDisplay{
 						array(
 							'id' 		=> 'page_template_slug',
 							'title' 	=> __( $this->get_current_page_slug(), 'page_template' ),
-							'parent'	=> page_template,
+							'parent'	=> 'page_template',
 							'href' 		=> false
 						)
 					);
@@ -166,7 +166,7 @@ class PageTemplateDisplay{
 					array(
 						'id' 		=> 'similar_pages',
 						'title' 	=> "<strong>".__( 'Similar Pages:', 'page_template' )."</strong>",
-						'parent'	=> page_template,
+						'parent'	=> 'page_template',
 						'href' 		=> false
 					)
 				);
@@ -181,7 +181,7 @@ class PageTemplateDisplay{
 							array(
 								'id' 		=> 'similar_page_'.$i,
 								'title' 	=> $page->post_title,
-								'parent'	=> page_template,
+								'parent'	=> 'page_template',
 								'href' 		=> get_permalink($page->ID)
 							)
 						);
