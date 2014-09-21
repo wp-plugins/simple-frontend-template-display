@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) OR exit;
 Plugin Name: Simple Frontend Template Display
 Plugin URI: http://www.mikeselander.com/
 Description: Displays the current page template in the admin toolbar for quick & easy reference
-Version: 0.3
+Version: 0.3.1
 Author: Mike Selander
 Author URI: http://www.mikeselander.com/
 License: GPL2
